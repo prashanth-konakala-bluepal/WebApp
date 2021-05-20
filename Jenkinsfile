@@ -15,7 +15,7 @@ pipeline{
 						 steps
 								{
 								 sh "mvn clean package"
-								 sh "mv /var/lib/jenkins/workspace/WebApp_main/webapp/target/*.war /var/lib/jenkins/workspace/WebApp_main/webapp/target/main.war"
+								 sh "mv /var/lib/jenkins/workspace/WebApp/webapp/target/*.war /var/lib/jenkins/workspace/WebApp/webapp/target/main.war"
 								}
 						}		
 					stage("Deploying to EC2")
@@ -26,7 +26,7 @@ pipeline{
 										{
 										 sh """
 										
-											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp_main/webapp/target/main.war ubuntu@18.220.148.93:/opt/tomcat/webapps/
+											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp/webapp/target/main.war ubuntu@18.220.148.93:/opt/tomcat/webapps/
 										
 										"""
 										}
