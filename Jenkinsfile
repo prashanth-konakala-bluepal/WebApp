@@ -36,7 +36,7 @@ pipeline{
 						{
 						 steps
 								{
-									scripts
+									script
 											{
 												def scannerHome = tool 'sonarqube';
 												withSonarQubeEnv("Sonarqube_Jenkinsfile")
