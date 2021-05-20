@@ -50,8 +50,8 @@ pipeline{
 									    }
 								}
 					    	}
-				       stage("Code Coverage")
-					   	{
+				    	stage("Code Coverage")
+						{
 						 steps 
 							{
 								jacoco()       
