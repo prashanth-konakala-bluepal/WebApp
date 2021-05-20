@@ -62,7 +62,7 @@ pipeline{
 						{
 						 steps
 								{
-									timeout (time: 3, unit: 'MINUTES')
+									timeout (time: 2, unit: 'MINUTES')
 										{
 											script
 													{
