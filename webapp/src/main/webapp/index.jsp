@@ -1,7 +1,12 @@
-<h1> Welcome to Simple Tomcat Deployment Project !!   <h1>
+<h1> Welcome to Simple WebApp Deployment Project !!   <h1>
 <h1> This is Bluepal <h1>
-<h2> This is Dev Environment <h2>
-<h2> Deploying a War File From Main_Branch on Tomcat Using Jenkins Pipeline <h2>
-<h3> This is Multibranch Pipeline Project <h3>
-<h3> This is Main_Branch <h3>
-<h4> Hi to All from Main woihfiunhnfjeogihghpiehgifa ohfwiufwogf; <h4>
+<h2> Deploying a project From SCM on Tomcat Using Jenkins Pipeline with Sonarqube Server<h2>
+<h3> This is CI-CD Pipeline Project <h3>
+<h3> Stage 1: Git Checkout
+     Stage 2: Maven Build
+     Stage 3: Deploying to EC2
+     Stage 4: Sonarqube Analysis
+     Stage 5: Code Coverage
+     Stage 6: Quality Status Check
+     Stage 7: Email Notification
+  <h3>
