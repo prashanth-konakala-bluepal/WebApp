@@ -32,31 +32,31 @@ pipeline{
 										}
 								}
 						}
-					stage("Sonar Analysis")
-					    	{
+					stage("Sonarqube Analysis")
+						{
 						 steps
 								{
-								    script 
-									    {
-										def scannerHome = tool 'sonarqube';
-										withSonarQubeEnv("Sonarqube_Jenkinsfile")
-										{
-										 sh 'mvn clean install -f pom.xml'
-										 sh " mvn -f pom.xml sonar:sonar \
-										      -Dsonar.projectName=WebApp \
-										      -Dsonar.projectKey=WebApp \
-										      -Dsonar.login=90ac62d4db0cf7360246c13ca40fa8e098d9937f "
-										}
-									    }
+									scripts
+											{
+												def scannerHome = tool 'sonarqube';
+												withSonarQubeEnv("Sonarqube_Jenkinsfile")
+												{
+													sh 'mvn clean install -f pom.xml'
+													sh " mvn -f pom.xml sonar:sonar \
+														-Dsonar.projectName=WebApp \
+														-Dsonar.projectKey=WebApp \
+														-Dsonar.login=90ac62d4db0cf7360246c13ca40fa8e098d9937f "
+												}
+											}
 								}
-					    	}
-				    	stage("Code Coverage")
+						}	
+					stage("Code Coverage")
 						{
-						 steps 
-							{
-								jacoco()       
-							}
-					    	}
+						 steps
+								{
+									jacoco()
+								}
+						}
 					stage("Quality Status Check")
 						{
 							timeout (time: 1, unit: 'HOURS')
