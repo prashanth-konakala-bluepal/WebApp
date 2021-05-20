@@ -26,7 +26,7 @@ pipeline{
 										{
 										 sh """
 										
-											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp_main/webapp/target/main.war ubuntu@3.15.198.149:/opt/tomcat/webapps/
+											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp_main/webapp/target/main.war ubuntu@18.220.148.93:/opt/tomcat/webapps/
 										
 										"""
 										}
@@ -60,13 +60,14 @@ pipeline{
 					stage("Quality Status Check")
 						{
 							timeout (time: 1, unit: 'HOURS')
-									{
-										def qg = waitForQualityGate()
-										if (qg.status != 'OK')
+									script
 											{
-												error "Pipeline aborted due to Quality Gate Failure: ${qg.status}"
+												def qg = waitForQualityGate()
+												if (qg.status != 'OK')
+													{
+														error "Pipeline aborted due to Quality Gate Failure: ${qg.status}"
+													}
 											}
-									}
 						}
 					stage ("Email Notification")
 						{
