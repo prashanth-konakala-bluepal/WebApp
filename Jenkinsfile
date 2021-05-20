@@ -7,7 +7,7 @@ pipeline{
 						{
 						 steps
 								{
-								 git branch: 'main', url: 'https://github.com/prashanth-konakala-bluepal/WebApp.git'
+								 git branch: 'master', url: 'https://github.com/prashanth-konakala-bluepal/WebApp.git'
 								}
 						}
 					stage("Maven Build")
