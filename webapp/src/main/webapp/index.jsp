@@ -1,4 +1,4 @@
-<h1> Welcome to Simple WebApp Deployment Project !!   <h1>
+<h1> Welcome to WebApp Deployment Project !!   <h1>
 <h1> This is Bluepal <h1>
 <h2> Deploying a project From SCM on Tomcat Using Jenkins Pipeline with Sonarqube Server<h2>
 <h3> This is CI-CD Pipeline Project <h3>
