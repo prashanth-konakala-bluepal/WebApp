@@ -42,7 +42,7 @@ pipeline{
 												withSonarQubeEnv("Sonarqube_Jenkinsfile")
 												{
 													// sh 'mvn -f pom.xml'
-													sh " mvn sonar:sonar \
+													sh " mvn -f pom.xml sonar:sonar \
 														-Dsonar.projectName=WebApp \
 														-Dsonar.projectKey=WebApp \
 														-Dsonar.host.url=http://13.234.115.101:9000/sonar \
