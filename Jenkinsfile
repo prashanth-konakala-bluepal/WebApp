@@ -42,7 +42,7 @@ pipeline{
 												withSonarQubeEnv("Sonarqube_Jenkinsfile")
 												{
 													// sh 'mvn clean install -f pom.xml'
-													sh " mvn sonar:sonar \
+													sh " mvn -f all/pom.xml sonar:sonar \
 														-Dsonar.projectName=WebApp \
 														-Dsonar.projectKey=WebApp \
 														-Dsonar.login=90ac62d4db0cf7360246c13ca40fa8e098d9937f "
