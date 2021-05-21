@@ -44,7 +44,7 @@ pipeline{
 										{
 										 sh """
 										
-											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war ubuntu@http://18.219.90.6:/opt/tomcat/webapps/
+											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war ubuntu@http://http://18.219.90.6:/opt/tomcat/webapps/
 										
 										"""
 										}
