@@ -25,13 +25,13 @@ pipeline{
 									script
 											{
 												def scannerHome = tool 'sonarqube';
-												withSonarQubeEnv("Sonarqube_Jenkinsfile")
+												withSonarQubeEnv("Sonarqube_Pipeline")
 												{
 													//sh 'mvn clean install -f pom.xml'
 													sh " mvn -f pom.xml sonar:sonar \
 														-Dsonar.projectName=WebApp \
 														-Dsonar.projectKey=WebApp \
-														-Dsonar.login=90ac62d4db0cf7360246c13ca40fa8e098d9937f "
+														-Dsonar.login=b86e54949ae3cb448a47fbd9aca44dfc24fc214d "
 												}
 											}
 								}
