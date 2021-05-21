@@ -18,20 +18,6 @@ pipeline{
 								 sh "mv /var/lib/jenkins/workspace/WebApp/webapp/target/*.war /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war"
 								}
 						}		
-					stage("Deploying to EC2")
-						{
-						 steps
-								{
-								 sshagent(['Tomcat_server-1'])
-										{
-										 sh """
-										
-											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war ubuntu@18.219.90.6:/opt/tomcat/webapps/
-										
-										"""
-										}
-								}
-						}
 					stage("Sonarqube Analysis")
 						{
 						 steps
@@ -41,7 +27,7 @@ pipeline{
 												def scannerHome = tool 'sonarqube';
 												withSonarQubeEnv("Sonarqube_Jenkinsfile")
 												{
-													sh 'mvn clean install -f pom.xml'
+													//sh 'mvn clean install -f pom.xml'
 													sh " mvn -f pom.xml sonar:sonar \
 														-Dsonar.projectName=WebApp \
 														-Dsonar.projectKey=WebApp \
@@ -49,7 +35,21 @@ pipeline{
 												}
 											}
 								}
-						}	
+						}
+					stage("Deploying to EC2")
+						{
+						 steps
+								{
+								 sshagent(['Tomcat_server-1'])
+										{
+										 sh """
+										
+											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war ubuntu@http://18.219.90.6:/opt/tomcat/webapps/
+										
+										"""
+										}
+								}
+						}
 					stage("Code Coverage")
 						{
 						 steps
@@ -61,7 +61,7 @@ pipeline{
 						{
 						 steps
 								{
-									timeout (time: 2, unit: 'MINUTES')
+									timeout (time: 3, unit: 'MINUTES')
 										{
 											script
 													{
