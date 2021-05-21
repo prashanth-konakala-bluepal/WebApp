@@ -18,6 +18,20 @@ pipeline{
 								 sh "mv /var/lib/jenkins/workspace/WebApp/webapp/target/*.war /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war"
 								}
 						}		
+					stage("Deploying to EC2")
+						{
+						 steps
+								{
+								 sshagent(['Tomcat_server-1'])
+										{
+										 sh """
+										
+											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war ubuntu@http://http://18.219.90.6:/opt/tomcat/webapps/
+										
+										"""
+										}
+								}
+						}
 					stage("Sonarqube Analysis")
 						{
 						 steps
@@ -34,20 +48,6 @@ pipeline{
 														-Dsonar.login=b86e54949ae3cb448a47fbd9aca44dfc24fc214d "
 												}
 											}
-								}
-						}
-					stage("Deploying to EC2")
-						{
-						 steps
-								{
-								 sshagent(['Tomcat_server-1'])
-										{
-										 sh """
-										
-											scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp/webapp/target/webapp_main.war ubuntu@http://http://18.219.90.6:/opt/tomcat/webapps/
-										
-										"""
-										}
 								}
 						}
 					stage("Code Coverage")
