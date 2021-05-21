@@ -70,7 +70,7 @@ pipeline{
 															{
 																error "Pipeline aborted due to Quality Gate Failure: ${qg.status}"
 															}
-														else (qg.status = 'OK')
+														else // (qg.status = 'OK')
 															{
 																print "Pipleine is Executed Successfully: ${qg.status}"
 															}
