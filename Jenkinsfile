@@ -41,7 +41,7 @@ pipeline{
 												def scannerHome = tool 'sonarqube';
 												withSonarQubeEnv("Sonarqube_Jenkinsfile")
 												{
-													sh 'mvn clean install'
+													sh 'mvn clean install -f pom.xml'
 													sh " mvn -f pom.xml sonar:sonar \
 														-Dsonar.projectName=WebApp \
 														-Dsonar.projectKey=WebApp \
@@ -69,6 +69,10 @@ pipeline{
 														if (qg.status != 'OK')
 															{
 																error "Pipeline aborted due to Quality Gate Failure: ${qg.status}"
+															}
+														else (qg.status = 'OK')
+															{
+																print "Pipleine is Executed Successfully: ${qg.status}"
 															}
 													}
 										}	
